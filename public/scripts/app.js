@@ -22,13 +22,13 @@ var IndecisionApp = function (_React$Component) {
         value: function render() {
             var title = 'Indecision app';
             var message = 'I like computers';
-            var options = ['One', 'two', 'three'];
+            var optionsArray = ['One', 'two', 'three'];
             return React.createElement(
                 'div',
                 null,
                 React.createElement(Header, { title: title, message: message }),
                 React.createElement(Action, null),
-                React.createElement(Options, null),
+                React.createElement(Options, { optionsArray: optionsArray }),
                 React.createElement(AddOptions, null)
             );
         }
@@ -121,7 +121,9 @@ var Options = function (_React$Component4) {
                     null,
                     'Options Component here '
                 ),
-                React.createElement(Option, null)
+                this.props.optionsArray.map(function (optionsArray) {
+                    return React.createElement(Option, { key: optionsArray, optionText: optionsArray });
+                })
             );
         }
     }]);
@@ -151,7 +153,8 @@ var Option = function (_React$Component5) {
                     'p',
                     null,
                     'Option Component here'
-                )
+                ),
+                this.props.optionsText
             );
         }
     }]);
