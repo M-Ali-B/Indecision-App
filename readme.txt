@@ -3,4 +3,4 @@ command for running :
 command for server  :
  live-server public 
  command for running specific files :
- babel src/playground/es6-classes-1.js --out-file=public/scripts/app.js --presets=env,react --watch
+ babel src/playground/reactCounter.js --out-file=public/scripts/app.js --presets=env,react --watch
