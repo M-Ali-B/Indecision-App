@@ -47,6 +47,14 @@ var IndecisionApp = function (_React$Component) {
     }, {
         key: 'handleAddOption',
         value: function handleAddOption(option) {
+
+            if (!option) {
+                return 'Enter valid value to add Item';
+            } else if (this.state.optionsArray.indexOf(option) > -1) {
+
+                return 'This option already exists';
+            }
+
             this.setState(function (prevState) {
                 return {
                     optionsArray: prevState.optionsArray.concat(option)
@@ -217,6 +225,10 @@ var AddOptions = function (_React$Component6) {
         var _this6 = _possibleConstructorReturn(this, (AddOptions.__proto__ || Object.getPrototypeOf(AddOptions)).call(this, props));
 
         _this6.handleAddOption = _this6.handleAddOption.bind(_this6);
+        _this6.state = {
+
+            error: undefined
+        };
         return _this6;
     }
 
@@ -225,11 +237,12 @@ var AddOptions = function (_React$Component6) {
         value: function handleAddOption(e) {
             e.preventDefault();
             var option = e.target.elements.option.value.trim();
+            var error = this.props.handleAddOption(option);
 
-            if (option) {
-                //alert(option);
-                this.props.handleAddOption(option);
-            }
+            this.setState(function () {
+
+                return { error: error };
+            });
         }
     }, {
         key: 'render',
@@ -238,6 +251,16 @@ var AddOptions = function (_React$Component6) {
             return React.createElement(
                 'div',
                 null,
+                this.state.error && React.createElement(
+                    'p',
+                    null,
+                    'warning:',
+                    React.createElement(
+                        'b',
+                        null,
+                        this.state.error
+                    )
+                ),
                 React.createElement(
                     'form',
                     { onSubmit: this.handleAddOption },
