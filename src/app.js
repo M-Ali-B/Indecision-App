@@ -43,13 +43,13 @@ class IndecisionApp extends React.Component {
     }
 
     render() {
-        const title = 'Indecision app';
+      //  const title = 'Indecision app';
         const message = 'I like computers';
         // const optionsArray = ['One','two','three'];
         return (
 
             <div>
-                <Header title={title} message={message} />
+                <Header message={message} />
                 <Action
                     hasOptions={this.state.optionsArray.length > 0}
                     handlePick={this.handlePick}
@@ -75,6 +75,11 @@ const Header = (props) => {
         <h1>{props.title}</h1>
         <h2>{props.message} </h2>
     </div>);
+};
+
+
+Header.defaultProps = {
+    title :'Indecision App'
 };
 
 // class Header extends React.Component {

@@ -64,13 +64,13 @@ var IndecisionApp = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            var title = 'Indecision app';
+            //  const title = 'Indecision app';
             var message = 'I like computers';
             // const optionsArray = ['One','two','three'];
             return React.createElement(
                 'div',
                 null,
-                React.createElement(Header, { title: title, message: message }),
+                React.createElement(Header, { message: message }),
                 React.createElement(Action, {
                     hasOptions: this.state.optionsArray.length > 0,
                     handlePick: this.handlePick
@@ -107,6 +107,10 @@ var Header = function Header(props) {
             ' '
         )
     );
+};
+
+Header.defaultProps = {
+    title: 'Indecision App'
 };
 
 // class Header extends React.Component {

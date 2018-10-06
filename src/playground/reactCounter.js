@@ -7,7 +7,7 @@ class Counter extends React.Component {
 
         // declaring state here 
         this.state = {
-            count: 0
+            count: props.count
 
         };
     }
@@ -58,6 +58,10 @@ class Counter extends React.Component {
     }
 
 }
+// default props are used for usability
+Counter.defaultProps = {
+    count : -1
+};
 
 ReactDOM.render(<Counter />, document.getElementById('app'));
 
