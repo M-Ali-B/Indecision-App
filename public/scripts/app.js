@@ -22,12 +22,46 @@ var IndecisionApp = function (_React$Component) {
         _this.handleDeleteOption = _this.handleDeleteOption.bind(_this);
         _this.state = {
 
-            optionsArray: ['One', 'two', 'three']
+            optionsArray: []
         };
         return _this;
     }
 
     _createClass(IndecisionApp, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            try {
+                console.log('Component Did Mounted ');
+                var json = localStorage.getItem('options');
+
+                var options = JSON.parse(json);
+                if (options) {
+                    this.setState(function () {
+                        return { optionsArray: options };
+                    });
+                }
+            } catch (e) {
+                // do nothing at all
+            }
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            console.log('Component will un mount');
+        }
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate(prevProps, prevState) {
+
+            if (prevState.optionsArray.length !== this.state.optionsArray.length) {
+
+                var json = JSON.stringify(this.state.optionsArray);
+                localStorage.setItem('options', json);
+                console.log('data in array', this.state.optionsArray);
+            }
+            console.log('Copmonent Did update');
+        }
+    }, {
         key: 'handleRemoveAll',
         value: function handleRemoveAll() {
             console.log('handle removeall clicked');
@@ -184,6 +218,15 @@ var Options = function Options(props) {
             { onClick: props.handleRemoveAll },
             'Remove all'
         ),
+        props.optionsArray.length === 0 && React.createElement(
+            'p',
+            null,
+            React.createElement(
+                'b',
+                null,
+                'Please add some options !'
+            )
+        ),
         props.optionsArray.map(function (optionsArray) {
             return React.createElement(Option, {
                 key: optionsArray,
@@ -273,6 +316,10 @@ var AddOptions = function (_React$Component2) {
             e.preventDefault();
             var option = e.target.elements.option.value.trim();
             var error = this.props.handleAddOption(option);
+
+            if (!error) {
+                e.target.elements.option.value = '';
+            }
 
             this.setState(function () {
                 return { error: error };
