@@ -1,19 +1,9 @@
-// //import './utils.js';
-//  import {square} from './utils.js';
-
-
-// console.log('app is running!');
-// console.log(square(4));
-
-// import isSenior, { isAdult, canDrink } from './person.js';
-// console.log(isAdult(22));
-// console.log(canDrink(23));
-// console.log(isSenior(55));
-
-import React from  "react";
+import React from 'react';
 import ReactDOM from "react-dom";
+import IndecisionApp from './components/IndecisionApp'
 
-const template = <p>Hello brother</p>;
 
-ReactDOM.render(template,document.getElementById('app'));
+
+
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
 
