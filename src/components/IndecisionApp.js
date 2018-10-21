@@ -7,19 +7,11 @@ import Action from "./Action";
 import Header from "./Header"
 
 export default class IndecisionApp extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleRemoveAll = this.handleRemoveAll.bind(this);
-        this.handlePick = this.handlePick.bind(this);
-        this.handleAddOption = this.handleAddOption.bind(this);
-        this.handleDeleteOption = this.handleDeleteOption.bind(this);
-        this.state = {
-
-            optionsArray: []
-        };
+    state = {
+        optionsArray:[]
     }
-
-    componentDidMount() {
+    
+    componentDidMount = () => {
         try {
             console.log('Component Did Mounted ');
             const json = localStorage.getItem('options');
@@ -34,7 +26,7 @@ export default class IndecisionApp extends React.Component {
         }
     }
 
-    componentWillUnmount() {
+    componentWillUnmount = ()=> {
         console.log('Component will un mount');
 
 
@@ -56,7 +48,7 @@ export default class IndecisionApp extends React.Component {
     }
 
 
-    handleRemoveAll() {
+    handleRemoveAll = () =>{
         console.log('handle removeall clicked');
 
         this.setState(() => ({ optionsArray: [] }));
@@ -71,7 +63,7 @@ export default class IndecisionApp extends React.Component {
         }));
 
     }
-    handlePick() {
+    handlePick = () => {
         const randomNum = Math.floor(Math.random() * this.state.optionsArray.length);
         const option = this.state.optionsArray[randomNum];
         alert(option);
