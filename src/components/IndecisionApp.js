@@ -5,10 +5,12 @@ import AddOptions from './AddOptions'
 import Options from './Options'
 import Action from "./Action";
 import Header from "./Header"
+import OptionModal from "./OptionModal"
 
 export default class IndecisionApp extends React.Component {
     state = {
-        optionsArray:[]
+        optionsArray:[],
+        selectedOption : undefined
     }
     
     componentDidMount = () => {
@@ -46,7 +48,11 @@ export default class IndecisionApp extends React.Component {
 
 
     }
-
+    handleRemoveOptionSelected =() =>{
+        this.setState(() => ({
+            selectedOption : undefined
+        }));
+    }
 
     handleRemoveAll = () =>{
         console.log('handle removeall clicked');
@@ -54,7 +60,7 @@ export default class IndecisionApp extends React.Component {
         this.setState(() => ({ optionsArray: [] }));
     }
 
-    handleDeleteOption(option) {
+    handleDeleteOption = ( option) =>{
         console.log('hdo', option);
         this.setState((prevState) => ({
             optionsArray: prevState.optionsArray.filter((optionToRemove) => {
@@ -66,9 +72,12 @@ export default class IndecisionApp extends React.Component {
     handlePick = () => {
         const randomNum = Math.floor(Math.random() * this.state.optionsArray.length);
         const option = this.state.optionsArray[randomNum];
-        alert(option);
+        // alert(option);
+        this.setState(()=>({
+            selectedOption: option
+        })); 
     }
-    handleAddOption(option) {
+    handleAddOption = ( option) =>{
 
         if (!option) {
             return 'Enter valid value to add Item';
@@ -101,6 +110,11 @@ export default class IndecisionApp extends React.Component {
 
                 />
                 <AddOptions handleAddOption={this.handleAddOption} />
+
+                <OptionModal
+                selectedOption={this.state.selectedOption}
+                handleRemoveOptionSelected={this.handleRemoveOptionSelected}
+                />
 
             </div>
         );

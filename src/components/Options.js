@@ -2,8 +2,7 @@ import React from 'react'
 import Option from './Option'
 
 
-const Options = (props) => {
-    return (
+const Options = (props) =>(
 
         <div>
 
@@ -23,6 +22,5 @@ const Options = (props) => {
 
     );
 
-};
 
 export default Options;
