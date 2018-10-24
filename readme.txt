@@ -11,3 +11,8 @@ yarn run build (good for production and physical copy of bundle.js)
 for using webpack server: 
 yarn run dev-server (it compiles and run the app and good for development, 
 it also used snappy memory so dont need to rely on bundle.js) 
+
+
+
+for installing sass:
+yarn add sass-loader@6.0.6  node-sass@4.5.3
