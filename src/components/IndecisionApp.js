@@ -97,8 +97,9 @@ export default class IndecisionApp extends React.Component {
         // const optionsArray = ['One','two','three'];
         return (
 
-            <div>
+            <div className="container">
                 <Header message={message} />
+               <div>
                 <Action
                     hasOptions={this.state.optionsArray.length > 0}
                     handlePick={this.handlePick}
@@ -110,7 +111,7 @@ export default class IndecisionApp extends React.Component {
 
                 />
                 <AddOptions handleAddOption={this.handleAddOption} />
-
+                    </div>
                 <OptionModal
                 selectedOption={this.state.selectedOption}
                 handleRemoveOptionSelected={this.handleRemoveOptionSelected}
