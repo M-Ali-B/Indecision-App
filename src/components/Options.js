@@ -7,7 +7,9 @@ const Options = (props) =>(
         <div>
 
             <p>Options Component here </p>
-            <button onClick={props.handleRemoveAll}>Remove all</button>
+            <button 
+            className="button button--link"
+            onClick={props.handleRemoveAll}>Remove all</button>
             {props.optionsArray.length === 0 && <p><b>Please add some options !</b></p>}
             {props.optionsArray.map((optionsArray) =>
 
